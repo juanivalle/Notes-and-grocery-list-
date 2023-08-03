@@ -38,6 +38,7 @@ body {
     background-color: #f7e98d;
     padding: 20px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    user-select: none;
 }
 .container .notes .note::before {
     content: 'Double Click to Remove the note';
@@ -47,7 +48,10 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding: 3px 0;
     background-color: rgba(0, 0, 0, 0.15);
+    font-size: 0.85em;
     transition: 0.5s;
     opacity: 0;
 }
@@ -72,7 +76,7 @@ body {
 }
 
 .createBox {
-    position:relative;
+    position: relative;
     width: var(--size);
     height: var(--size);
     z-index: 1000;
@@ -89,4 +93,9 @@ body {
     outline: none;
     font-size: 0.2em;
     resize: none;
+}
+
+.details h3 {
+    user-select: none;
+    
 }
