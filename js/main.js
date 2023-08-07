@@ -4,6 +4,15 @@ let notes = document.getElementsByClassName('notes')[0];
 let input = document.getElementById('userInput');
 let i = 0;
 
+
+let notesArray = JSON.parse(localStorage.getItem('notes')) || [];
+
+
+
+function saveNotesToLocalStorage() {
+    localStorage.setItem('notes', JSON.stringify(notesArray));
+}
+
 createBox.addEventListener('keydown', content);
 
 document.getElementById("create").addEventListener("click", function() {
@@ -32,10 +41,19 @@ function divStyle(text) {
 
     div.addEventListener("dblclick", function() {
         div.remove();
+        notesArray = notesArray.filter((note) => note !== text);
+        saveNotesToLocalStorage();
     })
 
     div.setAttribute('style', 'background:'+color()+'');
 
     notes.appendChild(div);
+    
+    notesArray.push(text);
+    saveNotesToLocalStorage();
 }
+notesArray.forEach((note) => {
+    divStyle(note);
+});
+
 });
