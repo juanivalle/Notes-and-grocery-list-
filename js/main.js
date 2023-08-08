@@ -34,6 +34,7 @@ function color(){
     return randomColors[i++];
 }
 function divStyle(text) {
+    
     let div = document.createElement("div");
     div.className = 'note';
     div.innerHTML = '<div class="details">'+'<h3>'+text+'<h3>'+'</div>';
@@ -48,9 +49,10 @@ function divStyle(text) {
     div.setAttribute('style', 'background:'+color()+'');
 
     notes.appendChild(div);
-    
-    notesArray.push(text);
-    saveNotesToLocalStorage();
+    if (!notesArray.includes(text)) {
+        notesArray.push(text);
+        saveNotesToLocalStorage();
+    }
 }
 notesArray.forEach((note) => {
     divStyle(note);
